@@ -34,3 +34,6 @@ def handle_client(client_socket, addr):
 
     print(f"[DISCONNECTED] {addr}")
     client_socket.close()
+    
+if __name__ == "__main__":
+    start_server()
