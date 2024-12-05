@@ -16,3 +16,21 @@ def start_server():
         client_handler.start()
         
         
+def handle_client(client_socket, addr):
+    print(f"[NEW CONNECTION] {addr} connected.")
+
+    while True:
+        # Receive message from client
+        msg = client_socket.recv(1024).decode('utf-8')
+        if not msg:
+            break
+        
+        print(f"Client Message Received: {msg}")
+
+        msg = input("Send Message: ")
+
+        # Echo message back to client
+        client_socket.send(msg.encode('utf-8'))
+
+    print(f"[DISCONNECTED] {addr}")
+    client_socket.close()
